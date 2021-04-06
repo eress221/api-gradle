@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+#  freemarker:
+#    template-loader-path: classpath:/templates
+#    suffix: .ftlh
+  profiles:
+    active: local
+  messages:
+    basename: i18n/exception
+    encoding: UTF-8
+  jwt:
+    secret: sample@$&
+#  카카오 연동
+  social:
+    kakao:
+      client_id: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX # 앱생성시 받은 REST API 키
+      redirect: /social/login/kakao
+      url:
+        login: null #https://kauth.kakao.com/oauth/authorize
+        token: null #https://kauth.kakao.com/oauth/token
+        profile: null #https://kapi.kakao.com/v2/user/me

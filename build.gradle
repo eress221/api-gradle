@@ -1,0 +1,62 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+
+group = 'com.eress'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-freemarker'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+    runtimeOnly 'com.h2database:h2'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    /* swagger */
+    implementation 'io.springfox:springfox-swagger2:2.6.1'
+    implementation 'io.springfox:springfox-swagger-ui:2.6.1'
+//    implementation 'io.springfox:springfox-swagger2:2.9.2'
+//    implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+
+    /* yaml - https://github.com/akihyro/yaml-resource-bundle */
+    implementation 'net.rakugakibox.util:yaml-resource-bundle:1.1'
+
+    /* spring security + jwt */
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+
+    /* gson */
+    implementation 'com.google.code.gson:gson'
+
+    /* spring actuator */
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    /* redis */
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'it.ozimov:embedded-redis:0.7.2'
+
+    /* unit test */
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}

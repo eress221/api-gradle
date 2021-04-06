@@ -1,0 +1,35 @@
+logging:
+  level:
+    root: warn
+    com.eress.apigradle: info
+  file:
+    path: /home/ec2-user/api/log
+    max-history: 7
+
+spring:
+  profiles: alpha
+  datasource:
+    url: jdbc:mariadb://127.0.0.1:3306/test?useUnicode=true&autoReconnect=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: test
+    password: test@test.com
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDBDialect
+      # MySQL: org.hibernate.dialect.MySQL5InnoDBDialect
+      # Oracle: org.hibernate.dialect.Oracle10gDialect
+      # MariaDB: org.hibernate.dialect.MariaDBDialect
+    properties.hibernate:
+      hbm2ddl.auto: none
+        # create – 서버 시작할 때 모든 테이블을 생성합니다.
+        # create-drop – 서버 시작할 때 테이블을 생성하고 종료할 때 생성된 테이블을 삭제합니다.
+        # update – 서버 시작 시 Entity와 Table을 비교하여 변경된 내용을 반영합니다. Table이 없으면 새롭게 생성합니다.
+        # validate – 서버 시작 시 Entity와 실제 Table을 비교하여 다르면 시작하지 않고 종료합니다.
+        # none – 아무런 처리를 하지 않습니다.
+      format_sql: true
+    showSql: true
+    generate-ddl: false
+  url:
+    base: http://alpha.test.com
+  redis:
+    host: alpha.test # 서버에 설치한 Redis의 호스트 정보
+    port: 6379 # 서버에 설치한 Redis의 port 정보
